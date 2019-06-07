@@ -1,7 +1,13 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import React,{Component} from 'react';
+import {createStore} from 'redux';
+import {View,StyleSheet} from 'react-native';
+import {Provider} from 'react-redux';
+import {reducers} from '../reducers';
+import Form from './Form';
 
-class Home extends Component {
+const store = createStore(reducers);
+
+export default class Home extends Component {
     constructor(props) {
         super(props);
     }
@@ -18,11 +24,11 @@ class Home extends Component {
     }
     render() {
         return (
-            <View>
-                <TouchableOpacity style={styles['button']} onPress={() => {this.props.navigation.navigate('form')}}>
-                    <Text style={styles['buttonTitle']}>Criar nova tarefa</Text>
-                </TouchableOpacity>
-            </View>
+            <Provider store={store}>
+                <View>
+                    <Form/>
+                </View>
+            </Provider>
         );
     }
 }
@@ -41,5 +47,3 @@ const styles = StyleSheet.create({
         'fontSize': 18
     }
 });
-
-export default Home;

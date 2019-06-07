@@ -1,22 +1,13 @@
-import React, {Component} from 'react';
-import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import React,{Component} from 'react';
+import {View,Text,TextInput,TouchableOpacity,StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
+import {addTask} from '../actions';
 
 class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
             'textInput': ''
-        }
-    }
-    static navigationOptions = {
-        'title': 'Nova tarefa',
-        'headerTintColor': '#ffffff',
-        'headerStyle': {
-            'backgroundColor': '#ff5722'
-        },
-        'headerTitleStyle': {
-            'color': '#ffffff',
-            'fontSize': 30
         }
     }
     render() {
@@ -30,7 +21,11 @@ class Form extends Component {
                     })}}
                     value={this.state['textInput']}
                 />
-                <TouchableOpacity style={styles['button']} onPress={() => {console.log('Tarefa adicionada!')}}>
+                <TouchableOpacity
+                    style={styles['button']}
+                    onPress={() => {
+                        this.props['addTask'](this.state['textInput'])
+                    }}>
                     <Text style={styles['buttonTitle']}>Adicionar nova tarefa</Text>
                 </TouchableOpacity>
             </View>
@@ -41,7 +36,9 @@ class Form extends Component {
 const styles = StyleSheet.create({
     'input': {
         'height': 40,
-        'margin': 20,
+        'marginTop': 20,
+        'marginRight': 20,
+        'marginLeft': 20,
         'justifyContent': 'center',
         'alignItems': 'center',
         'fontSize': 18,
@@ -62,4 +59,8 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Form;
+const mapDispatchToProps = {
+    'addTask': addTask
+}
+
+export default connect(null,mapDispatchToProps)(Form);
