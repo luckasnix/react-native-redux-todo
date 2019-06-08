@@ -3,23 +3,24 @@ import {createStore} from 'redux';
 import {View,StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import {reducers} from '../reducers';
-import Form from './Form';
+import devToolsEnhancer from 'remote-redux-devtools'
+import Form from '../components/Form';
 
-const store = createStore(reducers);
+const store = createStore(reducers,devToolsEnhancer());
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
     }
     static navigationOptions = {
-        'title': 'Lista de tarefas',
-        'headerTintColor': '#ffffff',
-        'headerStyle': {
-            'backgroundColor': '#ff5722'
+        'title' : 'Lista de tarefas',
+        'headerTintColor' : '#ffffff',
+        'headerStyle' : {
+            'backgroundColor' : '#ff5722'
         },
-        'headerTitleStyle': {
-            'color': '#ffffff',
-            'fontSize': 30
+        'headerTitleStyle' : {
+            'color' : '#ffffff',
+            'fontSize' : 30
         }
     }
     render() {
@@ -35,15 +36,15 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
     'button': {
-        'height': 40,
-        'margin': 20,
-        'justifyContent': 'center',
-        'alignItems': 'center',
-        'backgroundColor': '#ff5722',
-        'borderRadius': 4
+        'height' : 40,
+        'margin' : 20,
+        'justifyContent' : 'center',
+        'alignItems' : 'center',
+        'backgroundColor' : '#ff5722',
+        'borderRadius' : 4
     },
-    'buttonTitle': {
-        'color': '#ffffff',
-        'fontSize': 18
+    'buttonTitle' : {
+        'color' : '#ffffff',
+        'fontSize' : 18
     }
 });

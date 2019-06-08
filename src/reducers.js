@@ -4,11 +4,10 @@ import {ADD_TASK} from './actions';
 export function taskList(state = [],action) {
     switch (action['type']) {
         case ADD_TASK:
-            let newState = [...state];
             let newTask = {
                 'task' : action['task']
             }
-            return newState.push(newTask);
+            return [...state,newTask];
         default:
             return state;
     }

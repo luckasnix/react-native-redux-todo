@@ -7,7 +7,7 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'textInput': ''
+            'textInput' : ''
         }
     }
     render() {
@@ -24,7 +24,10 @@ class Form extends Component {
                 <TouchableOpacity
                     style={styles['button']}
                     onPress={() => {
-                        this.props['addTask'](this.state['textInput'])
+                        this.props['addTask'](this.state['textInput']);
+                        this.setState({
+                            'textInput' : ''
+                        });
                     }}>
                     <Text style={styles['buttonTitle']}>Adicionar nova tarefa</Text>
                 </TouchableOpacity>
@@ -34,28 +37,28 @@ class Form extends Component {
 }
 
 const styles = StyleSheet.create({
-    'input': {
-        'height': 40,
-        'marginTop': 20,
-        'marginRight': 20,
-        'marginLeft': 20,
-        'justifyContent': 'center',
-        'alignItems': 'center',
-        'fontSize': 18,
-        'borderBottomWidth': 2,
-        'borderBottomColor': '#ff5722'
+    'input' : {
+        'height' : 40,
+        'marginTop' : 20,
+        'marginRight' : 20,
+        'marginLeft' : 20,
+        'justifyContent' : 'center',
+        'alignItems' : 'center',
+        'fontSize' : 18,
+        'borderBottomWidth' : 2,
+        'borderBottomColor' : '#ff5722'
     },
-    'button': {
-        'height': 40,
-        'margin': 20,
-        'justifyContent': 'center',
-        'alignItems': 'center',
-        'backgroundColor': '#ff5722',
-        'borderRadius': 4
+    'button' : {
+        'height' : 40,
+        'margin' : 20,
+        'justifyContent' : 'center',
+        'alignItems' : 'center',
+        'backgroundColor' : '#ff5722',
+        'borderRadius' : 4
     },
-    'buttonTitle': {
-        'color': '#ffffff',
-        'fontSize': 18
+    'buttonTitle' : {
+        'color' : '#ffffff',
+        'fontSize' : 18
     }
 });
 
