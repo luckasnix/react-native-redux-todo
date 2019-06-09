@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {reducers} from '../reducers';
 import devToolsEnhancer from 'remote-redux-devtools'
 import Form from '../components/Form';
+import List from '../components/List';
 
 const store = createStore(reducers,devToolsEnhancer());
 
@@ -28,6 +29,7 @@ export default class Home extends Component {
             <Provider store={store}>
                 <View>
                     <Form/>
+                    <List/>
                 </View>
             </Provider>
         );
