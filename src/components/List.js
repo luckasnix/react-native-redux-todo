@@ -1,20 +1,20 @@
-import React,{Component} from 'react';
-import {View,Text} from 'react-native';
+import React from 'react';
+import {FlatList} from 'react-native';
 import {connect} from 'react-redux';
+import Item from './Item';
 
-class List extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <View>
-                {this.props['tasks'].map((cur) => {
-                    return <Text key={cur['id']}>{cur['task']}</Text>;
-                })}
-            </View>
-        );
-    }
+function List(props) {
+    return (
+        <FlatList
+            data={props['tasks']}
+            renderItem={({item}) => {
+                return <Item title={item['task']}/>
+            }}
+            keyExtractor={(item) => {
+                return item['id'].toString();
+            }}
+        />
+    );
 }
 
 function mapStateToProps(state) {

@@ -9,7 +9,7 @@ import List from '../components/List';
 
 const store = createStore(reducers,devToolsEnhancer());
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
     }
@@ -36,17 +36,4 @@ export default class Home extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    'button': {
-        'height' : 40,
-        'margin' : 20,
-        'justifyContent' : 'center',
-        'alignItems' : 'center',
-        'backgroundColor' : '#ff5722',
-        'borderRadius' : 4
-    },
-    'buttonTitle' : {
-        'color' : '#ffffff',
-        'fontSize' : 18
-    }
-});
+export default Home;
