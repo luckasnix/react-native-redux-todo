@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {createStore} from 'redux';
-import {View,StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Provider} from 'react-redux';
 import {reducers} from '../reducers';
 import devToolsEnhancer from 'remote-redux-devtools'

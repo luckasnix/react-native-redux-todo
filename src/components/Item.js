@@ -1,11 +1,13 @@
 import React from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {TouchableOpacity,Text,StyleSheet} from 'react-native';
 
 function Item(props) {
     return (
-        <View style={styles['container']}>
-            <Text style={styles['title']}>{props.title}</Text>
-        </View>
+        <TouchableOpacity style={styles['container']} onPress={props['pressTask']}>
+            <Text style={[styles['title'],props['item']['done'] ? styles['lineThrough'] : {}]}>
+                {props['item']['task']}
+            </Text>
+        </TouchableOpacity>
     );
 }
 
@@ -15,7 +17,7 @@ const styles = StyleSheet.create({
         'marginRight' : 20,
         'marginLeft' : 20,
         'marginBottom' : 20,
-        'padding' : 20,
+        'padding' : 10,
         'justifyContent' : 'center',
         'borderWidth' : 2,
         'borderColor' : '#ff8a50',
@@ -24,6 +26,9 @@ const styles = StyleSheet.create({
     'title': {
         'color' : '#ff8a50',
         'fontSize' : 18
+    },
+    'lineThrough' : {
+        'textDecorationLine' : 'line-through'
     }
 });
 
