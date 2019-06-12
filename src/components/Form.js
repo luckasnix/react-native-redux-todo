@@ -1,13 +1,14 @@
 import React,{Component} from 'react';
 import {View,Text,TextInput,TouchableOpacity,StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
-import {addTask} from '../actions';
+import {addTask,setTextInput,updateTask} from '../actions';
 
 class Form extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'textInput' : ''
+    titleGenerator() {
+        if (this.props['input']['id']) {
+            return 'Salvar edição';
+        } else {
+            return 'Adicionar tarefa';
         }
     }
     render() {
@@ -16,20 +17,21 @@ class Form extends Component {
                 <TextInput
                     style={styles['input']}
                     placeholder='Nova tarefa'
-                    onChangeText={(text) => {this.setState({
-                        'textInput': text
-                    })}}
-                    value={this.state['textInput']}
+                    onChangeText={(text) => {this.props['setTextInput'](text)}}
+                    value={this.props['input']['task']}
                 />
                 <TouchableOpacity
                     style={styles['button']}
                     onPress={() => {
-                        this.props['addTask'](this.state['textInput']);
-                        this.setState({
-                            'textInput' : ''
-                        });
+                        if (this.props['input']['id']) {
+                            this.props['updateTask'](this.props['input']);
+                        } else {
+                            this.props['addTask'](this.props['input']['task']);
+                        }
                     }}>
-                    <Text style={styles['buttonTitle']}>Adicionar nova tarefa</Text>
+                    <Text style={styles['buttonTitle']}>
+                        {this.titleGenerator()}
+                    </Text>
                 </TouchableOpacity>
             </View>
         );
@@ -62,8 +64,16 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapDispatchToProps = {
-    'addTask': addTask
+function mapStateToProps(state) {
+    return {
+        'input' : state['input']
+    };
 }
 
-export default connect(null,mapDispatchToProps)(Form);
+const mapDispatchToProps = {
+    'addTask' : addTask,
+    'setTextInput' : setTextInput,
+    'updateTask' : updateTask
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Form);

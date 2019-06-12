@@ -12,3 +12,24 @@ export function toggleTaskStatus(id) {
         'id' : id
     };
 }
+export const SET_TEXT_INPUT = 'SET_TEXT_INPUT';
+export function setTextInput(text) {
+    return {
+        'type' : SET_TEXT_INPUT,
+        'text' : text
+    };
+}
+export const EDIT_TASK = 'EDIT_TASK';
+export function editTask(item) {
+    return {
+        'type' : EDIT_TASK,
+        'item' : item
+    };
+}
+export const UPDATE_TASK = 'UPDATE_TASK';
+export function updateTask(item) {
+    return {
+        'type' : UPDATE_TASK,
+        'item' : item
+    };
+}

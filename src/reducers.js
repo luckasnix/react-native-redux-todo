@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import {ADD_TASK,TOGGLE_TASK_STATUS} from './actions';
+import {ADD_TASK,TOGGLE_TASK_STATUS,SET_TEXT_INPUT,EDIT_TASK,UPDATE_TASK} from './actions';
 
-let curId = 0;
+let curId = 1;
 export function taskList(state = [],action) {
     switch (action['type']) {
         case ADD_TASK:
@@ -11,6 +11,13 @@ export function taskList(state = [],action) {
                 'done' : false
             }
             return [...state,newTask];
+        case UPDATE_TASK:
+            return state.map((cur) => {
+                if (cur['id'] === action['item']['id']) {
+                    return action['item'];
+                }
+                return cur;
+            });
         case TOGGLE_TASK_STATUS:
             return state.map((cur) => {
                 if (cur['id'] === action['id']) {
@@ -26,6 +33,31 @@ export function taskList(state = [],action) {
     }
 }
 
+const initialState = {
+    'id' : null,
+    'task' : '',
+    'done' : false
+};
+
+export function textInput(state = initialState,action) {
+    switch (action['type']) {
+        case SET_TEXT_INPUT:
+            return {
+                ...state,
+                'task' : action['text']
+            };
+        case ADD_TASK:
+            return initialState;
+        case UPDATE_TASK:
+            return initialState;
+        case EDIT_TASK:
+            return action['item'];
+        default:
+            return state;
+    }
+}
+
 export const reducers = combineReducers({
-    'tasks' : taskList
+    'tasks' : taskList,
+    'input' : textInput
 });

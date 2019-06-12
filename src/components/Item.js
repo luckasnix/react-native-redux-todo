@@ -3,7 +3,11 @@ import {TouchableOpacity,Text,StyleSheet} from 'react-native';
 
 function Item(props) {
     return (
-        <TouchableOpacity style={styles['container']} onPress={props['pressTask']}>
+        <TouchableOpacity
+            style={styles['container']}
+            onPress={props['pressTask']}
+            onLongPress={props['longPressTask']}
+        >
             <Text style={[styles['title'],props['item']['done'] ? styles['lineThrough'] : null]}>
                 {props['item']['task']}
             </Text>
