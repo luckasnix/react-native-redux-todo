@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Todo List",
-    "slug": "todo",
+    "name": "react-native-redux-todo",
+    "slug": "react-native-redux-todo",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [

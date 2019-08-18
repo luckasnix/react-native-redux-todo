@@ -1,5 +1,5 @@
-import React from 'react';
-import {TouchableOpacity,Text,StyleSheet} from 'react-native';
+import React from 'react'
+import {TouchableOpacity,Text,StyleSheet} from 'react-native'
 
 function Item(props) {
     return (
@@ -12,7 +12,7 @@ function Item(props) {
                 {props['item']['task']}
             </Text>
         </TouchableOpacity>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     'lineThrough' : {
         'textDecorationLine' : 'line-through'
     }
-});
+})
 
-export default Item;
+export default Item

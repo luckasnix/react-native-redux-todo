@@ -1,17 +1,17 @@
-import React,{Component} from 'react';
-import {createStore} from 'redux';
-import {View} from 'react-native';
-import {Provider} from 'react-redux';
-import {reducers} from '../reducers';
+import React,{Component} from 'react'
+import {createStore} from 'redux'
+import {View} from 'react-native'
+import {Provider} from 'react-redux'
+import {reducers} from '../reducers'
 import devToolsEnhancer from 'remote-redux-devtools'
-import Form from '../components/Form';
-import List from '../components/List';
+import Form from '../components/Form'
+import List from '../components/List'
 
-const store = createStore(reducers,devToolsEnhancer());
+const store = createStore(reducers,devToolsEnhancer())
 
 class Home extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
     static navigationOptions = {
         'title' : 'Lista de tarefas',
@@ -32,8 +32,8 @@ class Home extends Component {
                     <List/>
                 </View>
             </Provider>
-        );
+        )
     }
 }
 
-export default Home;
+export default Home

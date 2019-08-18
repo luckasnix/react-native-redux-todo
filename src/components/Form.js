@@ -1,14 +1,14 @@
-import React,{Component} from 'react';
-import {View,Text,TextInput,TouchableOpacity,StyleSheet} from 'react-native';
-import {connect} from 'react-redux';
-import {addTask,setTextInput,updateTask} from '../actions';
+import React,{Component} from 'react'
+import {View,Text,TextInput,TouchableOpacity,StyleSheet} from 'react-native'
+import {connect} from 'react-redux'
+import {addTask,setTextInput,updateTask} from '../actions'
 
 class Form extends Component {
     titleGenerator() {
         if (this.props['input']['id']) {
-            return 'Salvar edição';
+            return 'Salvar edição'
         } else {
-            return 'Adicionar tarefa';
+            return 'Adicionar tarefa'
         }
     }
     render() {
@@ -24,9 +24,9 @@ class Form extends Component {
                     style={styles['button']}
                     onPress={() => {
                         if (this.props['input']['id']) {
-                            this.props['updateTask'](this.props['input']);
+                            this.props['updateTask'](this.props['input'])
                         } else {
-                            this.props['addTask'](this.props['input']['task']);
+                            this.props['addTask'](this.props['input']['task'])
                         }
                     }}>
                     <Text style={styles['buttonTitle']}>
@@ -34,7 +34,7 @@ class Form extends Component {
                     </Text>
                 </TouchableOpacity>
             </View>
-        );
+        )
     }
 }
 
@@ -62,12 +62,12 @@ const styles = StyleSheet.create({
         'color' : '#ffffff',
         'fontSize' : 18
     }
-});
+})
 
 function mapStateToProps(state) {
     return {
         'input' : state['input']
-    };
+    }
 }
 
 const mapDispatchToProps = {
@@ -76,4 +76,4 @@ const mapDispatchToProps = {
     'updateTask' : updateTask
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Form);
+export default connect(mapStateToProps,mapDispatchToProps)(Form)
